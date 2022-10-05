@@ -1,0 +1,14 @@
+{
+  "name": "price-tracker-app",
+  "version": "1.0.0",
+  "description": "Get Notification on Item's Price change",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashutosh Sharma",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^18.1.0"
+  }
+}
