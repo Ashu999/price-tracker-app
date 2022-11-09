@@ -18,7 +18,9 @@
   "homepage": "https://github.com/Ashu999/price-tracker-app#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "supertokens-auth-react": "^0.27.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

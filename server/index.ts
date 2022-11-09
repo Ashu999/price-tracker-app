@@ -1,17 +1,48 @@
-const puppeteer = require('puppeteer');
+import supertokens from 'supertokens-node';
+import Session from 'supertokens-node/recipe/session';
+import Passwordless from 'supertokens-node/recipe/passwordless';
+import express from 'express';
+import cors from 'cors';
+import { middleware } from 'supertokens-node/framework/express';
 
-(async () => {
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox']
-    });
-    const page = await browser.newPage();
-    // await page.goto('https://www.amazon.in/Pintola-Natural-Crunchy-Unsweetened-Non-GMO/dp/B0728CZSKC/ref=sr_1_5?crid=3OXWFD85QUWXH&keywords=peanut+butter+2.5+kg&qid=1664991615&qu=eyJxc2MiOiI1LjA3IiwicXNhIjoiNC43NCIsInFzcCI6IjQuMzIifQ%3D%3D&sprefix=pean%2Caps%2C486&sr=8-5E');
-    await page.goto('https://www.amazon.in/dp/B0728CZSKC?ref_=cm_sw_r_cp_ud_dp_BN1PWEVV1PAC47K38XWF');
-    const curPrice = await page.evaluate(() => {
-        return document.querySelector('.a-offscreen')?.innerHTML;
-    })
+supertokens.init({
+  framework: 'express',
+  supertokens: {
+    // https://try.supertokens.com is for demo purposes. Replace this with the address of your core instance (sign up on supertokens.com), or self host a core.
+    connectionURI: 'https://try.supertokens.com',
+    // apiKey: "IF YOU HAVE AN API KEY FOR THE CORE, ADD IT HERE",
+  },
+  appInfo: {
+    // learn more about this on https://supertokens.com/docs/session/appinfo
+    appName: 'price-tracker-app',
+    apiDomain: 'http://localhost',
+    websiteDomain: 'http://localhost:3000',
+    apiBasePath: '/login',
+    websiteBasePath: '/login',
+  },
+  recipeList: [
+    Passwordless.init({
+      flowType: 'USER_INPUT_CODE',
+      contactMethod: 'EMAIL_OR_PHONE',
+    }),
+    Session.init(), // initializes session features
+  ],
+});
 
-    console.log(curPrice);
-    await browser.close();
-})();
+let app = express();
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
+    credentials: true,
+  })
+);
+
+// IMPORTANT: CORS should be before the below line.
+app.use(middleware());
+
+app.get('/', (req, res, next) => {
+  res.send('Welcome Home');
+});
+app.listen(80);

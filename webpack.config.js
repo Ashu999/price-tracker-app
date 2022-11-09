@@ -27,6 +27,9 @@ module.exports = {
     ],
   },
   devtool: prod ? undefined : 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',

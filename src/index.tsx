@@ -2,18 +2,44 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-// import reportWebVitals from './reportWebVitals';
+import SuperTokens, {
+  SuperTokensWrapper,
+  getSuperTokensRoutesForReactRouterDom,
+} from 'supertokens-auth-react';
+import Passwordless from 'supertokens-auth-react/recipe/passwordless';
+import Session from 'supertokens-auth-react/recipe/session';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import * as reactRouterDom from 'react-router-dom';
+
+SuperTokens.init({
+  appInfo: {
+    appName: 'price-tracker-app',
+    apiDomain: 'http://localhost',
+    websiteDomain: 'http://localhost:3000',
+    apiBasePath: '/login',
+    websiteBasePath: '/login',
+  },
+  recipeList: [
+    Passwordless.init({
+      contactMethod: 'EMAIL_OR_PHONE',
+    }),
+    Session.init(),
+  ],
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+root.render(
+  <SuperTokensWrapper>
+    <BrowserRouter>
+      <Routes>
+        {/*This renders the login UI on the /login route*/}
+        {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
+        {/*Your app routes*/}
+        <Route path='/' element={<App />}></Route>
+      </Routes>
+    </BrowserRouter>
+  </SuperTokensWrapper>
+);
