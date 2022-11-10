@@ -3,7 +3,7 @@ import Session from 'supertokens-node/recipe/session';
 import Passwordless from 'supertokens-node/recipe/passwordless';
 import express from 'express';
 import cors from 'cors';
-import { middleware } from 'supertokens-node/framework/express';
+import { middleware, errorHandler } from 'supertokens-node/framework/express';
 
 supertokens.init({
   framework: 'express',
@@ -42,7 +42,24 @@ app.use(
 // IMPORTANT: CORS should be before the below line.
 app.use(middleware());
 
+// ...your API routes
 app.get('/', (req, res, next) => {
   res.send('Welcome Home');
 });
+
+// Add this AFTER all your routes
+app.use(errorHandler());
+
+// your own error handler
+app.use(
+  (
+    err: any,
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    console.log(err);
+  }
+);
+
 app.listen(80);
