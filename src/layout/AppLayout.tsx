@@ -13,11 +13,11 @@ const AppLayout: React.FC = () => (
         theme='dark'
         mode='horizontal'
         defaultSelectedKeys={['1']}
-        items={new Array(2).fill(null).map((_, index) => {
+        items={new Array(1).fill(null).map((_, index) => {
           const key = index + 1;
           return {
             key,
-            label: `nav ${key}`,
+            label: `🐱‍👤Price Tracker App🐱‍🏍`,
           };
         })}
       />
@@ -33,7 +33,8 @@ const AppLayout: React.FC = () => (
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>
-      Ant Design ©2018 Created by Ant UED
+      Ashutosh Sharma © 2022 |{' '}
+      <a href='https://github.com/Ashu999/price-tracker-app'>GitHub</a>
     </Footer>
   </Layout>
 );

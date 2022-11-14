@@ -1,15 +1,5 @@
 import { PlusOutlined } from '@ant-design/icons';
-import {
-  Button,
-  Col,
-  DatePicker,
-  Drawer,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-} from 'antd';
+import { Button, Col, Drawer, Form, Input, Row, Select } from 'antd';
 import React, { useState } from 'react';
 
 const { Option } = Select;
@@ -38,19 +28,11 @@ const DrawerComp: React.FC = () => {
         Add New Item
       </Button>
       <Drawer
-        title='Create a new account'
+        title='Add a new Item'
         width={480}
         onClose={onClose}
         open={open}
         bodyStyle={{ paddingBottom: 80 }}
-        // extra={
-        //   <Space>
-        //     <Button onClick={onClose}>Cancel</Button>
-        //     <Button onClick={onClose} type='primary'>
-        //       Submit
-        //     </Button>
-        //   </Space>
-        // }
       >
         <Form
           layout='vertical'
@@ -67,7 +49,7 @@ const DrawerComp: React.FC = () => {
                   { required: true, message: 'Please enter name for the item' },
                 ]}
               >
-                <Input placeholder='Please enter name for the item' />
+                <Input placeholder='Peanut Butter (Crunchy)' />
               </Form.Item>
             </Col>
           </Row>
@@ -80,9 +62,7 @@ const DrawerComp: React.FC = () => {
               >
                 <Input
                   style={{ width: '100%' }}
-                  addonBefore='http://'
-                  addonAfter='.com'
-                  placeholder='Please enter url'
+                  placeholder='https://amzn.eu/d/9eHdFry'
                 />
               </Form.Item>
             </Col>

@@ -4,6 +4,9 @@ import Passwordless from 'supertokens-node/recipe/passwordless';
 import express from 'express';
 import cors from 'cors';
 import { middleware, errorHandler } from 'supertokens-node/framework/express';
+import Dashboard from 'supertokens-node/recipe/dashboard';
+import { verifySession } from 'supertokens-node/recipe/session/framework/express';
+import { SessionRequest } from 'supertokens-node/framework/express';
 
 supertokens.init({
   framework: 'express',
@@ -23,9 +26,12 @@ supertokens.init({
   recipeList: [
     Passwordless.init({
       flowType: 'USER_INPUT_CODE',
-      contactMethod: 'EMAIL_OR_PHONE',
+      contactMethod: 'PHONE',
     }),
     Session.init(), // initializes session features
+    Dashboard.init({
+      apiKey: 'admin',
+    }),
   ],
 });
 
@@ -43,8 +49,13 @@ app.use(
 app.use(middleware());
 
 // ...your API routes
-app.get('/', (req, res, next) => {
+app.get('/health', (req, res, next) => {
   res.send('Welcome Home');
+});
+app.post('/add-item', verifySession(), (req: SessionRequest, res) => {
+  let userId = req.session!.getUserId();
+  res.send(userId);
+  //....
 });
 
 // Add this AFTER all your routes
