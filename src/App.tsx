@@ -1,9 +1,10 @@
 import React from 'react';
-
+import 'antd/dist/antd.css';
+import AppLayout from './layout/AppLayout';
 function App() {
   return (
     <div>
-      <header>Hi React!</header>
+      <AppLayout />
     </div>
   );
 }
