@@ -7,6 +7,7 @@ import { middleware, errorHandler } from 'supertokens-node/framework/express';
 import Dashboard from 'supertokens-node/recipe/dashboard';
 import { verifySession } from 'supertokens-node/recipe/session/framework/express';
 import { SessionRequest } from 'supertokens-node/framework/express';
+import { PrismaClient } from '@prisma/client';
 
 supertokens.init({
   framework: 'express',
@@ -45,11 +46,19 @@ app.use(
   })
 );
 
+//prisma test
+const prisma = new PrismaClient();
+console.log('SUP');
+
 // IMPORTANT: CORS should be before the below line.
 app.use(middleware());
 
 // ...your API routes
-app.get('/health', (req, res, next) => {
+app.get('/health', async (req, res, next) => {
+  // const passwordless_users = await prisma.passwordless_users.findMany({});
+  // console.log(`passwordless_users form DB: ${passwordless_users[0]}`);
+  // console.log('DB: ', passwordless_users[0]);
+
   res.send('Welcome Home');
 });
 app.post('/add-item', verifySession(), (req: SessionRequest, res) => {
