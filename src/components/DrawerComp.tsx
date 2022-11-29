@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const { Option } = Select;
 
-const DrawerComp: React.FC = () => {
+export const DrawerComp: React.FC = () => {
   const [open, setOpen] = useState(true);
 
   const showDrawer = () => {
@@ -79,5 +79,3 @@ const DrawerComp: React.FC = () => {
     </>
   );
 };
-
-export default DrawerComp;

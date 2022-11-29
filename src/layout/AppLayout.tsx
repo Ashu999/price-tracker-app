@@ -1,11 +1,11 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React from 'react';
-import TableComp from '../components/TableComp';
-import DrawerComp from '../components/DrawerComp';
+import { TableComp } from '../components/TableComp';
+import { DrawerComp } from '../components/DrawerComp';
 import './appLayout.css';
 const { Header, Content, Footer } = Layout;
 
-const AppLayout: React.FC = () => (
+export const AppLayout: React.FC = () => (
   <Layout className='layout'>
     <Header>
       <div className='logo' />
@@ -38,5 +38,3 @@ const AppLayout: React.FC = () => (
     </Footer>
   </Layout>
 );
-
-export default AppLayout;

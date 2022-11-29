@@ -1,7 +1,7 @@
 import { Table } from 'antd';
 import React from 'react';
 
-function TableComp() {
+export const TableComp: React.FC = () => {
   const dataSource = [
     {
       key: '1',
@@ -35,6 +35,4 @@ function TableComp() {
     },
   ];
   return <Table dataSource={dataSource} columns={columns} />;
-}
-
-export default TableComp;
+};
