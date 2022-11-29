@@ -7,7 +7,9 @@ import { middleware, errorHandler } from 'supertokens-node/framework/express';
 import Dashboard from 'supertokens-node/recipe/dashboard';
 import { verifySession } from 'supertokens-node/recipe/session/framework/express';
 import { SessionRequest } from 'supertokens-node/framework/express';
-import { PrismaClient } from '@prisma/client';
+import { getPasswordlessUserData } from './dbOperations/User';
+import { routes as itemRoutes } from './routes/item';
+import { routes as healthRoutes } from './routes/health';
 
 supertokens.init({
   framework: 'express',
@@ -36,7 +38,7 @@ supertokens.init({
   ],
 });
 
-let app = express();
+const app = express();
 
 app.use(
   cors({
@@ -46,26 +48,13 @@ app.use(
   })
 );
 
-//prisma test
-const prisma = new PrismaClient();
-console.log('SUP');
-
 // IMPORTANT: CORS should be before the below line.
 app.use(middleware());
 
 // ...your API routes
-app.get('/health', async (req, res, next) => {
-  // const passwordless_users = await prisma.passwordless_users.findMany({});
-  // console.log(`passwordless_users form DB: ${passwordless_users[0]}`);
-  // console.log('DB: ', passwordless_users[0]);
-
-  res.send('Welcome Home');
-});
-app.post('/add-item', verifySession(), (req: SessionRequest, res) => {
-  let userId = req.session!.getUserId();
-  res.send(userId);
-  //....
-});
+console.log('Server Restarted');
+app.use(healthRoutes);
+app.use(itemRoutes);
 
 // Add this AFTER all your routes
 app.use(errorHandler());
@@ -78,7 +67,7 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ) => {
-    console.log(err);
+    console.error(err);
   }
 );
 
