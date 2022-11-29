@@ -156,3 +156,10 @@ model userid_mapping {
 
   @@id([supertokens_user_id, external_user_id])
 }
+
+model item_details {
+  id    Int     @id @unique @default(autoincrement())
+  name  String  @db.VarChar(256)
+  url   String  @db.VarChar(512)
+  price Decimal @db.Decimal(10, 2)
+}
