@@ -5,9 +5,6 @@ import express from 'express';
 import cors from 'cors';
 import { middleware, errorHandler } from 'supertokens-node/framework/express';
 import Dashboard from 'supertokens-node/recipe/dashboard';
-import { verifySession } from 'supertokens-node/recipe/session/framework/express';
-import { SessionRequest } from 'supertokens-node/framework/express';
-import { getPasswordlessUserData } from './dbOperations/User';
 import { routes as itemRoutes } from './routes/item';
 import { routes as healthRoutes } from './routes/health';
 
