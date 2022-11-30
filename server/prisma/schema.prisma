@@ -158,8 +158,9 @@ model userid_mapping {
 }
 
 model item_details {
-  id    Int     @id @unique @default(autoincrement())
-  name  String  @db.VarChar(256)
-  url   String  @db.VarChar(512)
-  price Decimal @db.Decimal(10, 2)
+  id      Int     @id @unique @default(autoincrement())
+  name    String  @db.VarChar(256)
+  url     String  @db.VarChar(512)
+  price   Decimal @db.Decimal(10, 2)
+  user_id String  @db.VarChar(256)
 }
