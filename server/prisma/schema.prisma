@@ -12,6 +12,7 @@ model all_auth_recipe_users {
   recipe_id      String          @db.VarChar(128)
   time_joined    BigInt          @db.UnsignedBigInt
   userid_mapping userid_mapping?
+  item_details   item_details[]
 
   @@index([time_joined(sort: Desc), user_id(sort: Desc)], map: "all_auth_recipe_users_pagination_index")
 }
@@ -158,9 +159,16 @@ model userid_mapping {
 }
 
 model item_details {
-  id      Int     @id @unique @default(autoincrement())
-  name    String  @db.VarChar(256)
-  url     String  @db.VarChar(512)
-  price   Decimal @db.Decimal(10, 2)
-  user_id String  @db.VarChar(256)
+  id    String  @id @unique @default(uuid())
+  name  String  @db.VarChar(256)
+  url   String  @db.VarChar(512)
+  price Decimal @db.Decimal(10, 2)
+
+  supertokens_user_id   String                @db.Char(36)
+  all_auth_recipe_users all_auth_recipe_users @relation(fields: [supertokens_user_id], references: [user_id], onDelete: Cascade, map: "item_details_ibfk_1")
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([supertokens_user_id, created_at(sort: Desc), updated_at(sort: Desc)])
 }
