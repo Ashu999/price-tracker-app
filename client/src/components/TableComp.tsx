@@ -55,7 +55,11 @@ export const TableComp: React.FC = () => {
     <Table
       dataSource={dataSource}
       columns={columns}
-      title={() => 'Items Being Tracked'}
+      title={() => (
+        <>
+          <strong style={{ color: '#108ee9' }}>Items Being Tracked</strong>
+        </>
+      )}
       bordered
     />
   );
