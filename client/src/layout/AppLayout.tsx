@@ -1,9 +1,10 @@
-import { Breadcrumb, Layout, Menu } from 'antd';
+import { Breadcrumb, Layout, Menu, Tooltip } from 'antd';
 import React from 'react';
 import { TableComp } from '../components/TableComp';
 import { DrawerComp } from '../components/DrawerComp';
 import './appLayout.css';
 const { Header, Content, Footer } = Layout;
+// import EyeIcon from '../assets/icons/eye.svg';
 
 export const AppLayout: React.FC = () => (
   <Layout className='layout'>
@@ -17,7 +18,17 @@ export const AppLayout: React.FC = () => (
           const key = index + 1;
           return {
             key,
-            label: `🐱‍👤Price Tracker App🐱‍🏍`,
+            label: (
+              <>
+                <Tooltip
+                  placement='left'
+                  title="Add Item to the List and you'll be notified when it's price is changed."
+                  color='geekblue'
+                >
+                  <strong>Price Tracker App</strong>
+                </Tooltip>
+              </>
+            ),
           };
         })}
       />
