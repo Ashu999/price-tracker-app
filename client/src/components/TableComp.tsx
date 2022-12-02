@@ -1,21 +1,25 @@
-import { Table } from 'antd';
-import React from 'react';
+import { Popconfirm, Table } from 'antd';
+import React, { useState } from 'react';
 
 export const TableComp: React.FC = () => {
-  const dataSource = [
+  const handleDelete = (key: Number) => {
+    const newData = dataSource.filter((item) => item.key !== key);
+    setDataSource(newData);
+  };
+  const [dataSource, setDataSource] = useState([
     {
-      key: '1',
-      name: 'Mike',
-      age: 32,
-      address: '10 Downing Street',
+      key: 1,
+      name: 'Mikey',
+      url: 'Mike',
+      price: 32,
     },
     {
-      key: '2',
-      name: 'John',
-      age: 42,
-      address: '10 Downing Street',
+      key: 2,
+      name: 'KK',
+      url: 'John',
+      price: 42,
     },
-  ];
+  ]);
 
   const columns = [
     {
@@ -24,15 +28,35 @@ export const TableComp: React.FC = () => {
       key: 'name',
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: 'URL',
+      dataIndex: 'url',
+      key: 'url',
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+    },
+    {
+      title: 'Operation',
+      dataIndex: 'operation',
+      render: (_: any, record: { key: Number }) =>
+        dataSource.length >= 1 ? (
+          <Popconfirm
+            title='Sure to delete?'
+            onConfirm={() => handleDelete(record.key)}
+          >
+            <a>Delete</a>
+          </Popconfirm>
+        ) : null,
     },
   ];
-  return <Table dataSource={dataSource} columns={columns} />;
+  return (
+    <Table
+      dataSource={dataSource}
+      columns={columns}
+      title={() => 'Items Being Tracked'}
+      bordered
+    />
+  );
 };
