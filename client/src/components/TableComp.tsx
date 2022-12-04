@@ -57,7 +57,7 @@ export const TableComp: React.FC = () => {
       columns={columns}
       title={() => (
         <>
-          <strong style={{ color: '#108ee9' }}>Items Being Tracked</strong>
+          <strong style={{ color: '#108ee9' }}>🍳Items Being Tracked</strong>
         </>
       )}
       bordered
