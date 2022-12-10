@@ -1,6 +1,7 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Col, Drawer, Form, Input, Row, Select } from 'antd';
 import React, { useState } from 'react';
+import { z } from 'zod';
 
 const { Option } = Select;
 
@@ -10,12 +11,15 @@ export const DrawerComp: React.FC = () => {
   const showDrawer = () => {
     setOpen(true);
   };
-
   const onClose = () => {
     setOpen(false);
   };
+
+  const nameSchema = z.string().max(255);
+  const urlSchema = z.string().url().max(511);
   const onFinish = (values: any) => {
     console.log('Success:', values);
+    // setOpen(false);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -47,6 +51,17 @@ export const DrawerComp: React.FC = () => {
                 label='Name'
                 rules={[
                   { required: true, message: 'Please enter name for the item' },
+                  {
+                    message: 'Invalid Name',
+                    validator: (_, value) => {
+                      try {
+                        value && nameSchema.parse(value);
+                        return Promise.resolve();
+                      } catch (err) {
+                        return Promise.reject('invalid Name');
+                      }
+                    },
+                  },
                 ]}
               >
                 <Input placeholder='Peanut Butter (Crunchy)' />
@@ -58,7 +73,23 @@ export const DrawerComp: React.FC = () => {
               <Form.Item
                 name='url'
                 label='Url'
-                rules={[{ required: true, message: 'Please enter url' }]}
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please enter url',
+                  },
+                  {
+                    message: 'Invalid URL',
+                    validator: (_, value) => {
+                      try {
+                        value && urlSchema.parse(value);
+                        return Promise.resolve();
+                      } catch (err) {
+                        return Promise.reject('invalid URL');
+                      }
+                    },
+                  },
+                ]}
               >
                 <Input
                   style={{ width: '100%' }}
