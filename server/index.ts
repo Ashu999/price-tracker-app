@@ -5,8 +5,8 @@ import express from 'express';
 import cors from 'cors';
 import { middleware, errorHandler } from 'supertokens-node/framework/express';
 import Dashboard from 'supertokens-node/recipe/dashboard';
-import { routes as itemRoutes } from './routes/item';
-import { routes as healthRoutes } from './routes/health';
+import { apiRoute as itemRoutes } from './apis/item';
+import { apiRoute as healthRoutes } from './apis/health';
 
 supertokens.init({
   framework: 'express',
