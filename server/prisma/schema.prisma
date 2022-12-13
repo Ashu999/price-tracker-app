@@ -159,10 +159,10 @@ model userid_mapping {
 }
 
 model item_details {
-  id    String  @id @unique @default(uuid())
-  name  String  @db.VarChar(256)
-  url   String  @db.VarChar(512)
-  price Decimal @db.Decimal(10, 2)
+  id    String @id @unique @default(uuid())
+  name  String @db.VarChar(256)
+  url   String @db.VarChar(512)
+  price String @db.VarChar(10)
 
   supertokens_user_id   String                @db.Char(36)
   all_auth_recipe_users all_auth_recipe_users @relation(fields: [supertokens_user_id], references: [user_id], onDelete: Cascade, map: "item_details_ibfk_1")
