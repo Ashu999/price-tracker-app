@@ -7,6 +7,8 @@ import { middleware, errorHandler } from 'supertokens-node/framework/express';
 import Dashboard from 'supertokens-node/recipe/dashboard';
 import { apiRoute as itemRoutes } from './apis/item';
 import { apiRoute as healthRoutes } from './apis/health';
+import { job as cronJob } from './cronJob/priceCheckAndNotify';
+import { getAllItemsFromDB } from './functions/getAllItemsFromDB';
 
 supertokens.init({
   framework: 'express',
@@ -26,7 +28,7 @@ supertokens.init({
   recipeList: [
     Passwordless.init({
       flowType: 'USER_INPUT_CODE',
-      contactMethod: 'PHONE',
+      contactMethod: 'EMAIL',
     }),
     Session.init(), // initializes session features
     Dashboard.init({
@@ -68,4 +70,9 @@ app.use(
   }
 );
 
+getAllItemsFromDB();
+
 app.listen(80);
+if (!cronJob.running) {
+  cronJob.start();
+}

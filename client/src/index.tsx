@@ -21,7 +21,7 @@ SuperTokens.init({
   },
   recipeList: [
     Passwordless.init({
-      contactMethod: 'PHONE',
+      contactMethod: 'EMAIL',
     }),
     Session.init(),
   ],
