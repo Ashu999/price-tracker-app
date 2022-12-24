@@ -8,7 +8,7 @@ import Dashboard from 'supertokens-node/recipe/dashboard';
 import { apiRoute as itemRoutes } from './apis/item';
 import { apiRoute as healthRoutes } from './apis/health';
 import { job as cronJob } from './cronJob/priceCheckAndNotify';
-import { getAllItemsFromDB } from './functions/getAllItemsFromDB';
+import { getUserIDAndNotifcationMessage } from './functions/getUserIDAndNotifcationMessage';
 
 supertokens.init({
   framework: 'express',
@@ -70,7 +70,7 @@ app.use(
   }
 );
 
-getAllItemsFromDB();
+getUserIDAndNotifcationMessage();
 
 app.listen(80);
 if (!cronJob.running) {
