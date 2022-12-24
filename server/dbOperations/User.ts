@@ -1,10 +1,6 @@
 import { prisma } from './init';
+import { deleteUser } from 'supertokens-node';
 
-// export async function getPhoneNo(userId: string) {
-//   return await prisma.passwordless_users.findUnique({
-//     where: {
-//       user_id: userId,
-//     },
-//     select: { phone_number: true },
-//   });
-// }
+export async function deleteUserById(userId: string) {
+  await deleteUser(userId); // this will succeed even if the userId didn't exist.
+}
