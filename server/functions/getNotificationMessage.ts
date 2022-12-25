@@ -5,10 +5,10 @@ export async function getNotificationMessage(
   newPrice: string,
   url: string
 ) {
-  //keep only the price Decreased scenario
+  //keep only the price Dropped scenario
   if (oldPrice.localeCompare(newPrice) !== 1) return null;
   //   const priceStatus: string =
-  //     oldPrice.localeCompare(newPrice) === 1 ? 'Decreased' : 'Increased';
-  const message = `The price for item: ${name} has Decreased from ${oldPrice} to ${newPrice} \\ Item Link: ${url}`;
+  //     oldPrice.localeCompare(newPrice) === 1 ? 'Dropped' : 'Increased';
+  const message = `The price for item: ${name} has Dropped from ${oldPrice} to ${newPrice} \\ Item Link: ${url}`;
   return message;
 }
