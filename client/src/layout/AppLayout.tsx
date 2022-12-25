@@ -1,11 +1,9 @@
-import { Breadcrumb, Layout, Menu, Tooltip } from 'antd';
+import { Layout, Menu, Tooltip } from 'antd';
 import React from 'react';
-import { TableComp } from '../components/TableComp';
-import { DrawerComp } from '../components/DrawerComp';
 import './appLayout.css';
-const { Header, Content, Footer } = Layout;
-// import EyeIcon from '../assets/icons/eye.svg';
+import { Home } from '../pages/Home';
 
+const { Header, Content, Footer } = Layout;
 export const AppLayout: React.FC = () => (
   <Layout className='layout'>
     <Header>
@@ -32,13 +30,12 @@ export const AppLayout: React.FC = () => (
           };
         })}
       />
-      <DrawerComp />
     </Header>
-    <Content style={{ padding: '65px 50px' }}>
-      <div className='site-layout-content'>
-        <TableComp />
-      </div>
+
+    <Content style={{ padding: '30px 50px' }}>
+      <Home />
     </Content>
+
     <Footer style={{ textAlign: 'center' }}>
       Ashutosh Sharma © 2022 |{' '}
       <a href='https://github.com/Ashu999/price-tracker-app'>GitHub</a>
