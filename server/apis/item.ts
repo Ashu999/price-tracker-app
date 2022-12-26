@@ -23,7 +23,7 @@ apiRoute.post(
     const { name, url } = req.body;
     let curPrice: string;
     try {
-      curPrice = await getCurrentPrice(req.body.url);
+      curPrice = (await getCurrentPrice(req.body.url))!;
     } catch (err) {
       console.error('Could Not Add Item: ' + err);
       return res.status(500).json({ message: 'Could Not Add Item.' });

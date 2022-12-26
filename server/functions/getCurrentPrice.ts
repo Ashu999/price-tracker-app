@@ -1,13 +1,13 @@
-//Uses puppeteer to fetch item Price from web
-const puppeteer = require('puppeteer');
+//Uses puppeteer to fetch amazon item Price from web
+import puppeteer from 'puppeteer';
 
-export async function getCurrentPrice(itemUrl: String) {
+export async function getCurrentPrice(itemUrl: string) {
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox'],
   });
   const page = await browser.newPage();
-  //Disable Loading Images (reduced runtime by more than half)
+  //Disable Loading Images (reduces function runtime)
   await page.setRequestInterception(true);
   page.on('request', (req: any) => {
     if (
@@ -21,8 +21,8 @@ export async function getCurrentPrice(itemUrl: String) {
     }
   });
   // Configure the navigation timeout
-  await page.setDefaultNavigationTimeout(0);
-  //domcontentloaded does not load javascript (reduced runtime by half)
+  page.setDefaultNavigationTimeout(0);
+  //domcontentloaded does not load javascript (reduces function runtime)
   await page.goto(itemUrl, { waitUntil: 'domcontentloaded' });
   const curPrice = await page.evaluate(() => {
     return document.querySelector('.a-offscreen')?.innerHTML;
