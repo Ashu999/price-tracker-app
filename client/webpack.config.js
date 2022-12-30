@@ -2,6 +2,7 @@ const prod = process.env.NODE_ENV === 'production';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -41,5 +42,9 @@ module.exports = {
       favicon: './public/favicon.ico',
     }),
     new MiniCssExtractPlugin(),
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+      safe: true, // load .env.example (defaults to "false" which does not use dotenv-safe)
+    }),
   ],
 };
