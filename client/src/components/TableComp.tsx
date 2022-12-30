@@ -1,25 +1,28 @@
 import { Popconfirm, Table } from 'antd';
 import React, { useState } from 'react';
 
-export const TableComp: React.FC = () => {
-  const handleDelete = (key: Number) => {
-    const newData = dataSource.filter((item) => item.key !== key);
-    setDataSource(newData);
+export type Props = {
+  tableData: Array<tableDataObject>;
+  deleteItem: Function;
+  loading: boolean;
+};
+type tableDataObject = {
+  key: string;
+  name: string;
+  url: string;
+  price: string;
+};
+
+export const TableComp: React.FC<Props> = ({
+  tableData,
+  deleteItem,
+  loading,
+}) => {
+  const handleDelete = (key: string) => {
+    console.log('DEL KEY: ', key);
+    const newData = tableData.filter((item) => item.key !== key);
+    deleteItem(key);
   };
-  const [dataSource, setDataSource] = useState([
-    {
-      key: 1,
-      name: 'Mikey',
-      url: 'Mike',
-      price: 32,
-    },
-    {
-      key: 2,
-      name: 'KK',
-      url: 'John',
-      price: 42,
-    },
-  ]);
 
   const columns = [
     {
@@ -40,8 +43,8 @@ export const TableComp: React.FC = () => {
     {
       title: 'Operation',
       dataIndex: 'operation',
-      render: (_: any, record: { key: Number }) =>
-        dataSource.length >= 1 ? (
+      render: (_: any, record: { key: string }) =>
+        tableData.length >= 1 ? (
           <Popconfirm
             title='Sure to delete?'
             onConfirm={() => handleDelete(record.key)}
@@ -53,7 +56,8 @@ export const TableComp: React.FC = () => {
   ];
   return (
     <Table
-      dataSource={dataSource}
+      loading={loading}
+      dataSource={tableData}
       columns={columns}
       title={() => (
         <>
