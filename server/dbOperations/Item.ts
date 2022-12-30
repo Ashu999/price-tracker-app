@@ -20,7 +20,7 @@ export async function deleteItem(id: string) {
   });
 }
 
-export async function getItemsData() {
+export async function getItems() {
   return await prisma.item_details.findMany({
     select: {
       id: true,
@@ -28,6 +28,20 @@ export async function getItemsData() {
       url: true,
       price: true,
       supertokens_user_id: true,
+    },
+  });
+}
+
+export async function getItemsByUserId(id: string) {
+  return await prisma.item_details.findMany({
+    where: {
+      supertokens_user_id: id,
+    },
+    select: {
+      id: true,
+      name: true,
+      url: true,
+      price: true,
     },
   });
 }

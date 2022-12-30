@@ -3,7 +3,7 @@ import { verifySession } from 'supertokens-node/recipe/session/framework/express
 import { SessionRequest } from 'supertokens-node/framework/express';
 import { getCurrentPrice } from '../functions/getCurrentPrice';
 import { body, validationResult } from 'express-validator';
-import { addItem, deleteItem } from '../dbOperations/Item';
+import { addItem, deleteItem, getItemsByUserId } from '../dbOperations/Item';
 import { Item } from '@/types/db';
 export const apiRoute = express();
 apiRoute.use(express.json());
@@ -17,6 +17,7 @@ apiRoute.post(
   async (req: SessionRequest, res: express.Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      // console.log('Req Body: ', req.body);
       return res.status(400).json({ errors: errors.array() });
     }
     const userId = req.session?.getUserId() || '';
@@ -39,7 +40,7 @@ apiRoute.post(
     return res.json({ message: 'Item Added.' });
   }
 );
-//DELETE ITEM
+//DELETE ITEM, TODO: Check that userID also matches
 apiRoute.delete(
   '/item',
   verifySession(),
@@ -57,5 +58,21 @@ apiRoute.delete(
       return res.status(404).json({ message: 'Could Not Delete Item.' });
     }
     return res.json({ message: 'Item Deleted.' });
+  }
+);
+//GET ALL User's Items
+apiRoute.get(
+  '/item',
+  verifySession(),
+  async (req: SessionRequest, res: express.Response) => {
+    const userId = req.session?.getUserId() || '';
+    let items = new Array();
+    try {
+      items = await getItemsByUserId(userId);
+    } catch (err) {
+      console.error('Could Not Delete Item: ' + err);
+      return res.status(404).json({ message: 'Could Not Delete Item.' });
+    }
+    return res.json(items);
   }
 );
