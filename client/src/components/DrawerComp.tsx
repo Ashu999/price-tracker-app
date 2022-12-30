@@ -3,9 +3,11 @@ import { Button, Col, Drawer, Form, Input, Row, Select } from 'antd';
 import React, { useState } from 'react';
 import { z } from 'zod';
 
-const { Option } = Select;
+type Props = {
+  addNewItem: Function;
+};
 
-export const DrawerComp: React.FC = () => {
+export const DrawerComp: React.FC<Props> = ({ addNewItem }) => {
   const [open, setOpen] = useState(true);
 
   const showDrawer = () => {
@@ -18,8 +20,8 @@ export const DrawerComp: React.FC = () => {
   const nameSchema = z.string().max(255);
   const urlSchema = z.string().url().max(511);
   const onFinish = (values: any) => {
-    console.log('Success:', values);
-    // setOpen(false);
+    //send data to Parent i.e Home
+    addNewItem(values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -40,7 +42,6 @@ export const DrawerComp: React.FC = () => {
       >
         <Form
           layout='vertical'
-          hideRequiredMark
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
         >
@@ -50,7 +51,7 @@ export const DrawerComp: React.FC = () => {
                 name='name'
                 label='Name'
                 rules={[
-                  { required: true, message: 'Please enter name for the item' },
+                  { required: true, message: 'Please enter the name' },
                   {
                     message: 'Invalid Name',
                     validator: (_, value) => {
@@ -76,7 +77,7 @@ export const DrawerComp: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: 'Please enter url',
+                    message: 'Please enter the url',
                   },
                   {
                     message: 'Invalid URL',
