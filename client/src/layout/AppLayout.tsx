@@ -20,7 +20,7 @@ export const AppLayout: React.FC = () => (
               <>
                 <Tooltip
                   placement='left'
-                  title="Add Item to the List and you'll be notified when it's price is changed."
+                  title="Add Item to the List and you'll be notified when it's price drops."
                   color='geekblue'
                 >
                   <strong>Price Tracker App</strong>
