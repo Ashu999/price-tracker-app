@@ -1,5 +1,5 @@
 import { Popconfirm, Table } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 
 export type Props = {
   tableData: Array<tableDataObject>;
@@ -33,7 +33,12 @@ export const TableComp: React.FC<Props> = ({
     {
       title: 'URL',
       dataIndex: 'url',
-      key: 'url',
+      render: (_: any, record: { url: string }) =>
+        tableData.length >= 1 ? (
+          <a href={record.url} target='_blank' rel='noreferrer noopener'>
+            Item Link
+          </a>
+        ) : null,
     },
     {
       title: 'Price',
@@ -46,7 +51,7 @@ export const TableComp: React.FC<Props> = ({
       render: (_: any, record: { key: string }) =>
         tableData.length >= 1 ? (
           <Popconfirm
-            title='Sure to delete?'
+            title='Sure to delete the Item?'
             onConfirm={() => handleDelete(record.key)}
           >
             <a>Delete</a>
