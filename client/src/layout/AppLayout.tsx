@@ -38,7 +38,13 @@ export const AppLayout: React.FC = () => (
 
     <Footer style={{ textAlign: 'center' }}>
       Ashutosh Sharma © 2022 |{' '}
-      <a href='https://github.com/Ashu999/price-tracker-app'>GitHub</a>
+      <a
+        href='https://github.com/Ashu999/price-tracker-app'
+        target='_blank'
+        rel='noreferrer noopener'
+      >
+        GitHub
+      </a>
     </Footer>
   </Layout>
 );
