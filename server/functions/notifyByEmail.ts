@@ -1,4 +1,4 @@
-//takes custome message, userEmailID and send Email to user
+//takes custom message, userEmailID and send Email to user
 import nodemailer from 'nodemailer';
 
 export async function notifyByEmail(userEmail: string, message: string) {
