@@ -11,7 +11,7 @@ export async function addItemAPI(item: any) {
     body: JSON.stringify(item),
   });
   const content = await rawResponse.json();
-  console.log(content);
+  // console.log(content);
 }
 
 export async function getUserItemsAPI() {
@@ -19,7 +19,7 @@ export async function getUserItemsAPI() {
     method: 'GET',
   });
   const content = await rawResponse.json();
-  console.log(content);
+  // console.log(content);
   return content;
 }
 
@@ -33,6 +33,6 @@ export async function deleteItemAPI(key: string) {
     body: JSON.stringify({ id: key }),
   });
   const content = await rawResponse.json();
-  console.log(content);
+  // console.log(content);
   return content;
 }

@@ -17,7 +17,6 @@ apiRoute.post(
   async (req: SessionRequest, res: express.Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // console.log('Req Body: ', req.body);
       return res.status(400).json({ errors: errors.array() });
     }
     const userId = req.session?.getUserId() || '';

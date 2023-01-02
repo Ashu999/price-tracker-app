@@ -19,7 +19,7 @@ export const TableComp: React.FC<Props> = ({
   loading,
 }) => {
   const handleDelete = (key: string) => {
-    console.log('DEL KEY: ', key);
+    // console.log('DEL KEY: ', key);
     const newData = tableData.filter((item) => item.key !== key);
     deleteItem(key);
   };

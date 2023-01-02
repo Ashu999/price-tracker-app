@@ -8,7 +8,7 @@ export const Home: React.FC = () => {
   let [tableData, setTableData] = useState<Props['tableData']>([]);
   let [loading, setLoading] = useState<boolean>(true);
   const addNewItem = (item: any) => {
-    console.log('P comp: ', item);
+    // console.log('P comp: ', item);
     //Make post api call to add item
     addItemAPI(item);
   };
@@ -16,12 +16,12 @@ export const Home: React.FC = () => {
     const newData = tableData.filter((item) => item.key !== key);
     setTableData(newData);
     deleteItemAPI(key);
-    console.log('P comp DEL key: ', key);
+    // console.log('P comp DEL key: ', key);
   };
   useEffect(() => {
     setLoading(true);
     getUserItemsAPI().then((ItemsData) => {
-      console.log('items form API', ItemsData);
+      // console.log('items form API', ItemsData);
 
       const tempTableData = ItemsData.map((obj: any) => {
         return {
@@ -32,7 +32,7 @@ export const Home: React.FC = () => {
         };
       });
       setTableData(tempTableData);
-      console.log('new TAB DATA: ', tableData);
+      // console.log('new TAB DATA: ', tableData);
     });
     setLoading(false);
   }, []);

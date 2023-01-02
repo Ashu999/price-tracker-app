@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const DrawerComp: React.FC<Props> = ({ addNewItem }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -22,10 +22,11 @@ export const DrawerComp: React.FC<Props> = ({ addNewItem }) => {
   const onFinish = (values: any) => {
     //send data to Parent i.e Home
     addNewItem(values);
+    setOpen(false);
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    // console.log('Failed:', errorInfo);
   };
 
   return (
