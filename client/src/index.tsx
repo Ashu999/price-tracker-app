@@ -8,8 +8,9 @@ import SuperTokens, {
 } from 'supertokens-auth-react';
 import Passwordless from 'supertokens-auth-react/recipe/passwordless';
 import Session from 'supertokens-auth-react/recipe/session';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import * as reactRouterDom from 'react-router-dom';
+import { NotFound } from './pages/NotFound';
 
 SuperTokens.init({
   appInfo: {
@@ -39,6 +40,7 @@ root.render(
         {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
         {/*Your app routes*/}
         <Route path='/' element={<App />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   </SuperTokensWrapper>
