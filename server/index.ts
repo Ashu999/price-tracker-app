@@ -50,7 +50,6 @@ app.use(
 app.use(middleware());
 
 // ...your API routes
-console.log('Server Started');
 app.use(healthRoutes);
 app.use(itemRoutes);
 
@@ -69,7 +68,9 @@ app.use(
   }
 );
 
-app.listen(80);
+const port = process.env.NODE_SERVER_PORT || 80;
+app.listen(port);
+console.log(`Server Started Port: ${port}`);
 if (!cronJob.running) {
   cronJob.start();
 }
