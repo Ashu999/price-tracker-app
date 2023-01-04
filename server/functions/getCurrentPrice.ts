@@ -23,7 +23,9 @@ export async function getCurrentPrice(itemUrl: string) {
   // Configure the navigation timeout
   page.setDefaultNavigationTimeout(0);
   //domcontentloaded does not load javascript (reduces function runtime)
-  await page.goto(itemUrl, { waitUntil: 'domcontentloaded' });
+  await page
+    .goto(itemUrl, { waitUntil: 'domcontentloaded' })
+    .catch((error) => console.error('Error at page.goto: ', error));
   const curPrice = await page.evaluate(() => {
     return document.querySelector('.a-offscreen')?.innerHTML;
   });
