@@ -3,7 +3,8 @@ import { getNotifactionInfo } from '../functions/getNotifactionInfo';
 import { notifyByEmail } from '../functions/notifyByEmail';
 
 async function sendNotification() {
-  console.log('CronJob Triggered');
+  var datetime = new Date();
+  console.log('CronJob Triggered: ', datetime);
   const notifcationInfo = await getNotifactionInfo();
   console.log('NOTI :', notifcationInfo);
   for (const info of notifcationInfo) {
@@ -18,7 +19,7 @@ async function sendNotification() {
 // create a new CronJob to run the function at 8AM, 2PM and 8PM every day
 export const job = new CronJob('0 8,14,20 * * *', sendNotification);
 
-// 06:07PM
-// export const job = new CronJob('7 18 * * *', sendNotification);
+// 10:53AM
+// export const job = new CronJob('53 10 * * *', sendNotification);
 
 console.log('Cron Job Started');
