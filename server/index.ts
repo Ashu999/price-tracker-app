@@ -9,18 +9,22 @@ import { apiRoute as itemRoutes } from './apis/item';
 import { apiRoute as healthRoutes } from './apis/health';
 import { job as cronJob } from './cronJob/priceCheckAndNotify';
 
+const apiDomain: any = process.env.API_DOMAIN; // || 'http://localhost';
+const apiPort: any = process.env.API_PORT; // '80';
+const clientAddress: any = process.env.CLIENT_ADDRESS; // || 'http://localhost:3000';
+const supertokensAddress: any = process.env.SUPERTOKENS_ADDRESS; // || 'localhost:3567';
+
 supertokens.init({
   framework: 'express',
   supertokens: {
-    // https://try.supertokens.com is for demo purposes. Replace this with the address of your core instance (sign up on supertokens.com), or self host a core.
-    connectionURI: 'localhost:3567',
+    connectionURI: supertokensAddress,
     // apiKey: "IF YOU HAVE AN API KEY FOR THE CORE, ADD IT HERE",
   },
   appInfo: {
     // learn more about this on https://supertokens.com/docs/session/appinfo
     appName: 'price-tracker-app',
-    apiDomain: 'http://localhost',
-    websiteDomain: 'http://localhost:3000',
+    apiDomain: apiDomain,
+    websiteDomain: clientAddress,
     apiBasePath: '/login',
     websiteBasePath: '/login',
   },
@@ -40,7 +44,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: clientAddress,
     allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
     credentials: true,
   })
@@ -68,9 +72,8 @@ app.use(
   }
 );
 
-const port = process.env.NODE_SERVER_PORT || 80;
-app.listen(port);
-console.log(`Server Started Port: ${port}`);
+app.listen(apiPort);
+console.log(`Server Started Port: ${apiPort}`);
 if (!cronJob.running) {
   cronJob.start();
 }
