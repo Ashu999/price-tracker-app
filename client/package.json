@@ -4,7 +4,8 @@
   "description": "Get Notification on Item's Price change",
   "scripts": {
     "start": "webpack-dev-server --port 3000 --mode development --open --hot --progress",
-    "build": "NODE_ENV=production webpack --progress"
+    "build": "NODE_ENV=production webpack --progress",
+    "prod-start": "serve dist --no-request-logging --no-clipboard"
   },
   "repository": {
     "type": "git",
