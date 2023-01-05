@@ -1,5 +1,4 @@
-const serverAddress: string =
-  process.env.REACT_APP_SERVER_ADDRESS || 'http://localhost:80';
+const serverAddress: any = process.env.API_SERVER_ADDRESS; // || 'http://localhost:80';
 
 export async function addItemAPI(item: any) {
   const rawResponse = await fetch(`${serverAddress}/item`, {
