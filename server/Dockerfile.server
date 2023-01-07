@@ -1,17 +1,31 @@
-FROM node:18.12.1
+FROM node:18.12.1 AS builder
 
-# pwd in docker is /app
-WORKDIR  /app
+WORKDIR /app
 
-COPY package*.json ./
+COPY . ./
 
 RUN npm i -g typescript
 RUN npm i
+RUN npm run build
 
-COPY . .
+FROM node:18.12.1
 
-ENV NODE_SERVER_PORT=80
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma
+
+
+ENV API_DOMAIN http://127.0.0.1
+ENV API_PORT 80
+ENV CLIENT_ADDRESS http://127.0.0.1:3000
+ENV SUPERTOKENS_ADDRESS http://supertokens:3567
+ENV SUPERTOKENS_DATABASE_URL mysql://root:root@db:3306/supertokens
+# https://myaccount.google.com/apppasswords
+# ENV NOTIFICATION_SENDER_EMAIL=<your-gmail-ID>
+# ENV NOTIFICATION_SENDER_PASS=<your-app-password>
 
 EXPOSE 80
 
-CMD [ "npm","start" ]
+CMD [ "npm","run","start:generate:prod" ]
+
+# RUN npx prisma migrate resolve --applied  20221124154712_init

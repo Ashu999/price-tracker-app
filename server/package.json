@@ -8,7 +8,10 @@
     "prisma-migrate": "npx prisma migrate deploy",
     "prisma-generate": "npx prisma generate",
     "build": "tsc",
-    "prod-start": "node dist/index.js"
+    "start:prod": "node dist/index.js",
+    "start:migrate:prod": "npx prisma migrate deploy && node dist/index.js",
+    "start:baseline:migrate:prod": "npx prisma migrate resolve --applied 20221124154712_init && npx prisma migrate deploy && node dist/index.js",
+    "start:generate:prod": "npx prisma generate && node dist/index.js"
   },
   "_moduleAliases": {
     "@": "dist"
@@ -26,6 +29,7 @@
     "express-validator": "^6.14.2",
     "module-alias": "^2.2.2",
     "nodemailer": "^6.8.0",
+    "prisma": "^4.6.1",
     "puppeteer": "^18.1.0",
     "supertokens-node": "^12.0.5"
   },
@@ -38,7 +42,6 @@
     "@types/nodemailer": "^6.4.7",
     "@types/puppeteer": "^5.4.6",
     "nodemon": "^2.0.20",
-    "prisma": "^4.6.1",
     "ts-node": "^10.9.1"
   }
 }
