@@ -25,8 +25,7 @@ ENV SUPERTOKENS_DATABASE_URL mysql://root:root@db:3306/supertokens
 # https://myaccount.google.com/apppasswords
 # ENV NOTIFICATION_SENDER_EMAIL=<your-gmail-ID>
 # ENV NOTIFICATION_SENDER_PASS=<your-app-password>
-ENV NOTIFICATION_SENDER_EMAIL chill.cheese.dev@gmail.com
-ENV NOTIFICATION_SENDER_PASS ayoqhkefqantveuj
+
 
 EXPOSE 80
 
