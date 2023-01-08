@@ -13,7 +13,7 @@ import * as reactRouterDom from 'react-router-dom';
 import { NotFound } from './pages/NotFound';
 const apiDomain: any = process.env.API_DOMAIN; // || 'http://localhost';
 const clientAddress: any = process.env.CLIENT_ADDRESS; // || 'http://localhost:3000';
-// console.log('ENVs :', apiDomain, clientAddress);
+// console.log('CLIENT ENVs :', apiDomain, clientAddress);
 
 SuperTokens.init({
   appInfo: {

@@ -11,7 +11,8 @@
     "start:prod": "node dist/index.js",
     "start:migrate:prod": "npx prisma migrate deploy && node dist/index.js",
     "start:baseline:migrate:prod": "npx prisma migrate resolve --applied 20221124154712_init && npx prisma migrate deploy && node dist/index.js",
-    "start:generate:prod": "npx prisma generate && node dist/index.js"
+    "start:generate:prod": "npx prisma generate && node dist/index.js",
+    "start:migrate:generate:prod": "npx prisma migrate deploy && npx prisma generate && node dist/index.js"
   },
   "_moduleAliases": {
     "@": "dist"
@@ -19,7 +20,7 @@
   "author": "Ashutosh Sharma",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^4.6.1",
+    "@prisma/client": "^4.8.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cron": "^2.1.0",
@@ -29,7 +30,7 @@
     "express-validator": "^6.14.2",
     "module-alias": "^2.2.2",
     "nodemailer": "^6.8.0",
-    "prisma": "^4.6.1",
+    "prisma": "^4.8.1",
     "puppeteer": "^18.1.0",
     "supertokens-node": "^12.0.5"
   },
