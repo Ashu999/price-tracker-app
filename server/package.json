@@ -10,7 +10,7 @@
     "build": "tsc",
     "start:prod": "node dist/index.js",
     "start:migrate:prod": "npx prisma migrate deploy && node dist/index.js",
-    "start:baseline:migrate:prod": "npx prisma migrate resolve --applied 20221124154712_init && npx prisma migrate deploy && node dist/index.js",
+    "start:baseline:migrate:prod": "npx prisma migrate resolve --applied 0_init && npx prisma migrate deploy && node dist/index.js",
     "start:generate:prod": "npx prisma generate && node dist/index.js",
     "start:migrate:generate:prod": "npx prisma migrate deploy && npx prisma generate && node dist/index.js"
   },
