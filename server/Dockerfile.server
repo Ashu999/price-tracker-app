@@ -19,7 +19,7 @@ COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules ./node_modules
 
 #puppeteer dependancies
-RUN apt-get update && apt-get install -y libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2
+RUN npm run i:puppeteer:dep
 
 ENV API_DOMAIN http://localhost:80
 ENV API_PORT 80
