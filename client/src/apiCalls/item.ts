@@ -1,4 +1,4 @@
-const serverAddress: any = process.env.API_SERVER_ADDRESS; // || 'http://localhost:80';
+const serverAddress: any = process.env.API_DOMAIN; // || 'http://localhost:80';
 
 export async function addItemAPI(item: any) {
   const rawResponse = await fetch(`${serverAddress}/item`, {
