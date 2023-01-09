@@ -1,4 +1,4 @@
-# Price Tracker App
+# <img  width="30" src="./.readme/icon.svg"/> Price Tracker App
 
 Track Price of Products on E-commerce site (like Amazon) and get Email notification when their price drops.
 
@@ -15,7 +15,7 @@ sudo apt install mysql-server
 service mysql start
 ```
 
-##### SuperTokens
+##### SuperTokens Core
 
 ```
 https://supertokens.com/docs/passwordless/pre-built-ui/setup/core/without-docker
