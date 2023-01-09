@@ -46,7 +46,8 @@ npx prisma migrate deploy
 npm start
 ```
 
-<hr>
+---
+
 ### With Docker
 
 ```
