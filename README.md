@@ -2,9 +2,11 @@
 
 Track Price of Products on E-commerce site (like Amazon) and get Email notification when their price drops.
 
+---
+
 ## Local Setup
 
-#### Without Docker
+### Without Docker
 
 ##### MySQL
 
@@ -24,6 +26,7 @@ https://supertokens.com/blog/connect-supertokens-to-database
 
 ```
 cd client/
+
 npm i
 npm start
 ```
@@ -32,8 +35,10 @@ npm start
 
 ```
 cd server/
+
 export NOTIFICATION_SENDER_EMAIL=<sender's email>
 export NOTIFICATION_SENDER_PASS=<sender's pass>
+
 npm i
 npm run i:puppeteer:dep
 npx prisma migrate resolve --applied 0_init
@@ -41,14 +46,14 @@ npx prisma migrate deploy
 npm start
 ```
 
----
-
-#### With Docker
+### With Docker
 
 ```
 cd <ROOT of Project>
+
 export NOTIFICATION_SENDER_EMAIL=<sender's email>
 export NOTIFICATION_SENDER_PASS=<sender's pass>
+
 docker-compose up --build
 ```
 
