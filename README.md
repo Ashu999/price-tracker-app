@@ -66,5 +66,5 @@ docker-compose up --build
 
 ## ScreenShots
 
-<img src="./.readme/screenshots/homepage.JPG"/>
-<img src="./.readme/screenshots/addItemForm.JPG"/>
+<img src="./.readme/screenshots/homepageV1.JPG"/>
+<img src="./.readme/screenshots/addItemFormV1.JPG"/>
