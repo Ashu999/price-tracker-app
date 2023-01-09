@@ -46,6 +46,7 @@ npx prisma migrate deploy
 npm start
 ```
 
+<hr>
 ### With Docker
 
 ```
@@ -60,3 +61,10 @@ docker-compose up --build
 ---
 
 **For <sender's pass> checkout:** `https://myaccount.google.com/apppasswords`
+
+---
+
+## ScreenShots
+
+<img src="./.readme/screenshots/homepage.JPG"/>
+<img src="./.readme/screenshots/addItemForm.JPG"/>
