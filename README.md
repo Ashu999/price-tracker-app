@@ -1,6 +1,6 @@
 # <img  width="30" src="./.readme/icon.svg"/> Price Tracker App
 
-Track Price of Products on E-commerce site (like Amazon) and get Email notification when their price drops.
+Track the Price of Products on E-commerce site(s) (like Amazon) and get Email notifications when the price drops.
 
 ---
 
