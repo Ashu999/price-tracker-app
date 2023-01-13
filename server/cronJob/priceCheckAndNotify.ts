@@ -16,8 +16,8 @@ async function sendNotification() {
   }
 }
 
-// create a new CronJob to run the function at 8AM, 2PM and 8PM every day
-export const job = new CronJob('0 8,14,20 * * *', sendNotification);
+// create a new CronJob to run the function every 4 hours, at the 0th minute
+export const job = new CronJob('0 */4 * * *', sendNotification);
 
 // 10:53AM
 // export const job = new CronJob('53 10 * * *', sendNotification);
