@@ -34,6 +34,6 @@ ENV NOTIFICATION_SENDER_PASS ${NOTIFICATION_SENDER_PASS}
 
 EXPOSE 80
 
-CMD [ "npm","run","start:migrate:prod" ]
+CMD [ "npm","run","start:baseline:migrate:prod" ]
 
 # RUN npx prisma migrate resolve --applied  20221124154712_init
