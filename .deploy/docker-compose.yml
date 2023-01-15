@@ -42,9 +42,9 @@ services:
     depends_on:
       - db
       - supertokens
-    args:
-        NOTIFICATION_SENDER_EMAIL: $NOTIFICATION_SENDER_EMAIL
-        NOTIFICATION_SENDER_PASS: $NOTIFICATION_SENDER_PASS
+    environment:
+      NOTIFICATION_SENDER_EMAIL: $NOTIFICATION_SENDER_EMAIL
+      NOTIFICATION_SENDER_PASS: $NOTIFICATION_SENDER_PASS
     # build:
     #   context: ../server
     #   dockerfile: Dockerfile.server
