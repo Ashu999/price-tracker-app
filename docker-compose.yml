@@ -37,6 +37,7 @@ services:
       retries: 5
 
   server:
+    image: chillcheese/price-tracker-app_server
     hostname: server
     depends_on:
       - db
@@ -59,6 +60,7 @@ services:
       retries: 3
 
   client:
+    image: chillcheese/price-tracker-app_client
     hostname: client
     depends_on: 
       - server
