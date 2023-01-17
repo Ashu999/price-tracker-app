@@ -15,7 +15,11 @@ export async function getNotifactionInfo() {
     const oldPrice = item.price;
     // const newPrice = '₹300.00';
     const newPrice: string = (await getCurrentPrice(item.url)) || oldPrice;
-    await updatePrice(item.id, newPrice);
+    await updatePrice(item.id, newPrice).catch((error) => {
+      console.error(
+        `Could not update Price in DB for itemId: ${item.id}, price: ${newPrice}, Error:  ${error}`
+      );
+    });
     await getNotificationMessage(item.name, oldPrice, newPrice, item.url)
       .then((message) => {
         if (message) {
