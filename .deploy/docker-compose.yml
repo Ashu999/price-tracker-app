@@ -79,6 +79,11 @@ services:
     networks:
       - app_network
     restart: unless-stopped
+    healthcheck:
+      test: curl -fs http://localhost:3000/health || exit 1
+      interval: 1h
+      timeout: 5s
+      retries: 5
 
 networks:
   app_network:
