@@ -64,6 +64,9 @@ services:
     hostname: client
     depends_on: 
       - server
+    environment:
+      API_DOMAIN: $API_DOMAIN
+      CLIENT_ADDRESS: $CLIENT_ADDRESS
     build:
       context: ./client
       dockerfile: Dockerfile.client
