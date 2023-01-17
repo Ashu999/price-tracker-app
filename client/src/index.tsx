@@ -43,6 +43,7 @@ root.render(
         {getSuperTokensRoutesForReactRouterDom(reactRouterDom)}
         {/*Your app routes*/}
         <Route path='/' element={<App />}></Route>
+        <Route path='/health' element={<p>Client: All Good</p>}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>

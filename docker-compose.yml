@@ -57,7 +57,7 @@ services:
       test: curl -fs http://localhost:80/health || exit 1
       interval: 1h
       timeout: 5s
-      retries: 3
+      retries: 5
 
   client:
     image: chillcheese/price-tracker-app_client
@@ -72,6 +72,11 @@ services:
     networks:
       - app_network
     restart: unless-stopped
+    healthcheck:
+      test: curl -fs http://localhost:3000/health || exit 1
+      interval: 1h
+      timeout: 5s
+      retries: 5
 
 networks:
   app_network:
