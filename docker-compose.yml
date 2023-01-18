@@ -43,6 +43,8 @@ services:
       - db
       - supertokens
     environment:
+      NOTIFICATION_SENDER_EMAIL: $NOTIFICATION_SENDER_EMAIL
+      NOTIFICATION_SENDER_PASS: $NOTIFICATION_SENDER_PASS
       API_DOMAIN: $API_DOMAIN
       CLIENT_ADDRESS : $CLIENT_ADDRESS
       SUPERTOKENS_ADDRESS : $SUPERTOKENS_ADDRESS
@@ -56,11 +58,11 @@ services:
     networks:
       - app_network
     restart: unless-stopped
-    healthcheck:
-      test: curl -fs http://localhost:80/health || exit 1
-      interval: 1h
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: curl -fs http://localhost:80/health || exit 1
+    #   interval: 1h
+    #   timeout: 5s
+    #   retries: 5
 
   client:
     image: chillcheese/price-tracker-app_client
@@ -78,11 +80,11 @@ services:
     networks:
       - app_network
     restart: unless-stopped
-    healthcheck:
-      test: curl -fs http://localhost:3000/health || exit 1
-      interval: 1h
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: curl -fs http://localhost:3000/health || exit 1
+    #   interval: 1h
+    #   timeout: 5s
+    #   retries: 5
 
 networks:
   app_network:
