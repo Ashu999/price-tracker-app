@@ -49,9 +49,6 @@ services:
       API_PORT: $API_PORT
       CLIENT_ADDRESS: $CLIENT_ADDRESS
       SUPERTOKENS_ADDRESS: $SUPERTOKENS_ADDRESS
-    # build:
-    #   context: ../server
-    #   dockerfile: Dockerfile.server
     ports:
       - "80:80"
     networks:
@@ -63,27 +60,19 @@ services:
     #   timeout: 5s
     #   retries: 3
 
-  client:
-    image: chillcheese/price-tracker-app_client
-    hostname: client
-    depends_on: 
-      - server
-    environment:
-      API_DOMAIN: $API_DOMAIN
-      CLIENT_ADDRESS: $CLIENT_ADDRESS
-    # build:
-    #   context: ../client
-    #   dockerfile: Dockerfile.client
-    ports:
-      - "3000:3000"
-    networks:
-      - app_network
-    restart: unless-stopped
-    # healthcheck:
-    #   test: curl -fs http://localhost:3000/health || exit 1
-    #   interval: 1h
-    #   timeout: 5s
-    #   retries: 5
+  # client:
+  #   image: chillcheese/price-tracker-app_client
+  #   hostname: client
+  #   depends_on: 
+  #     - server
+  #   environment:
+  #     API_DOMAIN: $API_DOMAIN
+  #     CLIENT_ADDRESS: $CLIENT_ADDRESS
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - app_network
+  #   restart: unless-stopped
 
 networks:
   app_network:
