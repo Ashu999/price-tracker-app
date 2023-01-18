@@ -10,16 +10,12 @@ import { apiRoute as healthRoutes } from './apis/health';
 import { job as cronJob } from './cronJob/priceCheckAndNotify';
 
 const apiDomain: any = process.env.API_DOMAIN; // || 'http://localhost';
-const apiPort: any = process.env.API_PORT; // '80';
 const clientAddress: any = process.env.CLIENT_ADDRESS; // || 'http://localhost:3000';
 const supertokensAddress: any = process.env.SUPERTOKENS_ADDRESS; // || 'http://localhost:3567';
-// console.log(
-//   'SERVER ENVs :',
-//   apiDomain,
-//   apiPort,
-//   clientAddress,
-//   supertokensAddress
-// );
+const apiPort: any = process.env.API_PORT; // '80';
+console.log(
+  `SERVER ENVs : apiDomain- ${apiDomain}, clientAddress- ${clientAddress}, supertokensAddress- ${supertokensAddress}, apiPort- ${apiPort}`
+);
 
 supertokens.init({
   framework: 'express',
