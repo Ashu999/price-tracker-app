@@ -36,7 +36,9 @@ supertokens.init({
       flowType: 'USER_INPUT_CODE',
       contactMethod: 'EMAIL',
     }),
-    Session.init(), // initializes session features
+    Session.init({
+      cookieSecure: true,
+    }), // initializes session features
     Dashboard.init({
       apiKey: 'admin',
     }),
