@@ -50,29 +50,21 @@ services:
       CLIENT_ADDRESS: $CLIENT_ADDRESS
       SUPERTOKENS_ADDRESS: $SUPERTOKENS_ADDRESS
     ports:
+      - "3000:3000"
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  client:
+    image: chillcheese/price-tracker-app_client
+    hostname: client
+    depends_on: 
+      - server
+    ports:
       - "80:80"
     networks:
       - app_network
     restart: unless-stopped
-    # healthcheck:
-    #   test: curl -fs http://localhost:80/health || exit 1
-    #   interval: 1h
-    #   timeout: 5s
-    #   retries: 3
-
-  # client:
-  #   image: chillcheese/price-tracker-app_client
-  #   hostname: client
-  #   depends_on: 
-  #     - server
-  #   environment:
-  #     API_DOMAIN: $API_DOMAIN
-  #     CLIENT_ADDRESS: $CLIENT_ADDRESS
-  #   ports:
-  #     - "3000:3000"
-  #   networks:
-  #     - app_network
-  #   restart: unless-stopped
 
 networks:
   app_network:

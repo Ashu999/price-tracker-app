@@ -9,13 +9,10 @@ RUN npm run build
 
 FROM node:18.12.1
 
-ENV API_DOMAIN http://localhost:80
-ENV CLIENT_ADDRESS http://localhost:3000
-
 RUN npm i -g serve
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD [ "npm","run","start:prod" ]

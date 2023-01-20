@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Get Notification on Item's Price change",
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --mode development --open --hot --progress",
+    "start": "webpack-dev-server --port 80 --mode development --open --hot --progress",
     "build": "NODE_ENV=production webpack --progress",
     "start:prod": "serve dist --no-request-logging --no-clipboard"
   },
