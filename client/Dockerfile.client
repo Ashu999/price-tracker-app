@@ -13,6 +13,6 @@ RUN npm i -g serve
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 443
+EXPOSE 3000
 
 CMD [ "npm","run","start:prod" ]

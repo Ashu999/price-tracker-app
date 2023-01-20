@@ -36,28 +36,28 @@ services:
       timeout: 5s
       retries: 5
 
-  server:
-    image: chillcheese/price-tracker-app_server
-    hostname: server
-    depends_on:
-      - db
-      - supertokens
-    environment:
-      NOTIFICATION_SENDER_EMAIL: $NOTIFICATION_SENDER_EMAIL
-      NOTIFICATION_SENDER_PASS: $NOTIFICATION_SENDER_PASS
-      API_DOMAIN: $API_DOMAIN
-      CLIENT_ADDRESS : $CLIENT_ADDRESS
-      SUPERTOKENS_ADDRESS : $SUPERTOKENS_ADDRESS
-      SUPERTOKENS_DATABASE_URL : $SUPERTOKENS_DATABASE_URL
-      API_PORT : $API_PORT
-    build:
-      context: ./server
-      dockerfile: Dockerfile.server
-    ports:
-      - "3000:3000"
-    networks:
-      - app_network
-    restart: unless-stopped
+  # server:
+  #   image: chillcheese/price-tracker-app_server
+  #   hostname: server
+  #   depends_on:
+  #     - db
+  #     - supertokens
+  #   environment:
+  #     NOTIFICATION_SENDER_EMAIL: $NOTIFICATION_SENDER_EMAIL
+  #     NOTIFICATION_SENDER_PASS: $NOTIFICATION_SENDER_PASS
+  #     API_DOMAIN: $API_DOMAIN
+  #     CLIENT_ADDRESS : $CLIENT_ADDRESS
+  #     SUPERTOKENS_ADDRESS : $SUPERTOKENS_ADDRESS
+  #     SUPERTOKENS_DATABASE_URL : $SUPERTOKENS_DATABASE_URL
+  #     API_PORT : $API_PORT
+  #   build:
+  #     context: ./server
+  #     dockerfile: Dockerfile.server
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - app_network
+  #   restart: unless-stopped
 
   client:
     image: chillcheese/price-tracker-app_client
@@ -68,7 +68,7 @@ services:
       context: ./client
       dockerfile: Dockerfile.client
     ports:
-      - "443:443"
+      - "443:3000"
     networks:
       - app_network
     restart: unless-stopped
