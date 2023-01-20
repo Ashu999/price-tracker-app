@@ -11,8 +11,8 @@ import Session from 'supertokens-auth-react/recipe/session';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import * as reactRouterDom from 'react-router-dom';
 import { NotFound } from './pages/NotFound';
-const apiDomain: any = process.env.API_DOMAIN; // || 'http://localhost';
-const clientAddress: any = process.env.CLIENT_ADDRESS; // || 'http://localhost:3000';
+const apiDomain: any = process.env.API_DOMAIN;
+const clientAddress: any = process.env.CLIENT_ADDRESS;
 console.log(
   `CLIENT ENVs : apiDomain- ${apiDomain}, clientAddress- ${clientAddress}`
 );
