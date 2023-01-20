@@ -62,8 +62,6 @@ services:
   client:
     image: chillcheese/price-tracker-app_client
     hostname: client
-    depends_on: 
-      - server
     build:
       context: ./client
       dockerfile: Dockerfile.client
