@@ -50,7 +50,7 @@ services:
       CLIENT_ADDRESS: $CLIENT_ADDRESS
       SUPERTOKENS_ADDRESS: $SUPERTOKENS_ADDRESS
     ports:
-      - "3000:3000"
+      - "80:80"
     networks:
       - app_network
     restart: unless-stopped
@@ -61,7 +61,7 @@ services:
     depends_on: 
       - server
     ports:
-      - "443:443"
+      - "3000:3000"
     networks:
       - app_network
     restart: unless-stopped
