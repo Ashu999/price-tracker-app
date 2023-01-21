@@ -50,7 +50,7 @@ services:
       CLIENT_ADDRESS: $CLIENT_ADDRESS
       SUPERTOKENS_ADDRESS: $SUPERTOKENS_ADDRESS
     ports:
-      - "80:80"
+      - "8080:8080"
     networks:
       - app_network
     restart: unless-stopped

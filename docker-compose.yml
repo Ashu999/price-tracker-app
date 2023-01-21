@@ -54,7 +54,7 @@ services:
       context: ./server
       dockerfile: Dockerfile.server
     ports:
-      - "80:80"
+      - "8080:8080"
     networks:
       - app_network
     restart: unless-stopped
