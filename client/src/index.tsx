@@ -13,15 +13,16 @@ import * as reactRouterDom from 'react-router-dom';
 import { NotFound } from './pages/NotFound';
 const apiDomain: any = process.env.API_DOMAIN;
 const clientAddress: any = process.env.CLIENT_ADDRESS;
+const loginApiBase: any = process.env.LOGIN_API_BASE;
 console.log(
-  `CLIENT ENVs : apiDomain- ${apiDomain}, clientAddress- ${clientAddress}`
+  `CLIENT ENVs : apiDomain- ${apiDomain}, clientAddress- ${clientAddress}, loginApiBase- ${loginApiBase}`
 );
 SuperTokens.init({
   appInfo: {
     appName: 'price-tracker-app',
     apiDomain: apiDomain,
     websiteDomain: clientAddress,
-    apiBasePath: '/login',
+    apiBasePath: loginApiBase,
     websiteBasePath: '/login',
   },
   recipeList: [
