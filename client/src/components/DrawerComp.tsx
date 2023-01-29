@@ -8,6 +8,7 @@ type Props = {
 };
 
 export const DrawerComp: React.FC<Props> = ({ addNewItem }) => {
+  const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -23,6 +24,7 @@ export const DrawerComp: React.FC<Props> = ({ addNewItem }) => {
     //send data to Parent i.e Home
     addNewItem(values);
     setOpen(false);
+    form.resetFields();
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -42,6 +44,7 @@ export const DrawerComp: React.FC<Props> = ({ addNewItem }) => {
         bodyStyle={{ paddingBottom: 80 }}
       >
         <Form
+          form={form}
           layout='vertical'
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
