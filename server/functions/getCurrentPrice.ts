@@ -26,9 +26,10 @@ export async function getCurrentPrice(itemUrl: string) {
   await page
     .goto(itemUrl, { waitUntil: 'domcontentloaded' })
     .catch((error) => console.error('Error at page.goto: ', error));
-  const curPrice = await page.evaluate(() => {
+  let curPrice = await page.evaluate(() => {
     return document.querySelector('.a-offscreen')?.innerHTML;
   });
   browser.close();
+  if (curPrice) curPrice = curPrice.replace(/\,/g, ''); //remove commas
   return curPrice;
 }
