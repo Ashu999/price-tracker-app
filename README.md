@@ -69,3 +69,4 @@ docker-compose up --build
 
 <img src="./.readme/screenshots/homepageV1.JPG"/>
 <img src="./.readme/screenshots/addItemFormV1.JPG"/>
+<img src="./.readme/screenshots/notifEmailV1.png"/>
