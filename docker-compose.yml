@@ -62,6 +62,10 @@ services:
   client:
     image: chillcheese/price-tracker-app_client
     hostname: client
+    environment:
+      API_DOMAIN: $API_DOMAIN
+      CLIENT_ADDRESS : $CLIENT_ADDRESS
+      LOGIN_API_BASE : $LOGIN_API_BASE
     build:
       context: ./client
       dockerfile: Dockerfile.client
