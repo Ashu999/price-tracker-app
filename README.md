@@ -70,3 +70,7 @@ docker-compose up --build
 <img src="./.readme/screenshots/homepageV1.JPG"/>
 <img src="./.readme/screenshots/addItemFormV1.JPG"/>
 <img src="./.readme/screenshots/notifEmailV1.png"/>
+
+## Demo using Docker
+
+<video controls src="./.readme/price-tracker-app-docker-demo.mp4" type="video/mp4" controlsList="nodownload"></video>
