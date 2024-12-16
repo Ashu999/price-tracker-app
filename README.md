@@ -73,7 +73,6 @@ docker-compose up --build
 
 ## Demo using Docker
 
-
 <video controls>
   <source src="./.readme/price-tracker-app-docker-demo.mp4" type="video/mp4" />
 </video>
