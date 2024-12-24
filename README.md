@@ -2,7 +2,8 @@
 
 Track the Price of Products on E-commerce site(s) (like Amazon) and get Email notifications when the price drops.
 
-Tech Stack: Nodejs, React, MySQL, Typescript, Prisma ORM
+ Tech Stack: Nodejs, React, MySQL, Typescript, Prisma ORM
+
 ---
 
 ## Local Setup
